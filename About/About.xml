@@ -3,6 +3,6 @@
   <Name>Time Scale Mod</Name>
   <ModID>com.zedle.modulus.timescale</ModID>
   <Author>Zedle</Author>
-  <Version>0.1.0</Version>
-  <Description>Adds 1x, 2x, and 4x simulation speed buttons to the factory HUD (next to the day/night control). Uses the same global update multiplier as the game simulation.</Description>
+  <Version>0.2.0</Version>
+  <Description>Adds 1x, 2x, and 4x simulation speed buttons to the factory HUD (next to the day/night control). Uses the same global update multiplier as the game simulation. Total play time on saves uses real-time so sim speed does not skew the clock.</Description>
 </ModMetadata>

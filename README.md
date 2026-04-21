@@ -7,6 +7,7 @@ A mod for **Modulus** that adds **1x**, **2x**, and **4x** simulation speed butt
 - Three speed presets: **1x**, **2x**, **4x**
 - Buttons appear on the in-game factory HUD toolbar (beside the day/night control)
 - No separate mod config: the live value is whatever **`GlobalUpdateMultiplier`** is for the session (including from the loaded save) until you tap a button
+- **Save play time** (total minutes stored on the save and shown in load / save UI) advances with **real wall time**, not scaled game time, so running at 2x or 4x does not inflate the reported hours played
 
 ## Installation
 
