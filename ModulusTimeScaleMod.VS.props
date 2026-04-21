@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildThisFileDirectory)ModulusTimeScaleMod.VS.User.props" Condition="Exists('$(MSBuildThisFileDirectory)ModulusTimeScaleMod.VS.User.props')" />
+  <PropertyGroup>
+    <SteamLibraryDirectory Condition="'$(SteamLibraryDirectory)' == ''">H:\SteamLibrary\steamapps\common</SteamLibraryDirectory>
+    <TargetFramework Condition="'$(TargetFramework)' == ''">net48</TargetFramework>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(TargetFramework)' == 'net48'">v4.8</TargetFrameworkVersion>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <LangVersion>latest</LangVersion>
+    <ErrorReport>none</ErrorReport>
+    <LanguageTargets>$(MSBuildToolsPath)\Microsoft.CSharp.targets</LanguageTargets>
+    <NoStandardLibraries>true</NoStandardLibraries>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Configurations>Debug;Release</Configurations>
+    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64</Platforms>
+    <DebugType>embedded</DebugType>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);MSB3021;MSB3231;MSB3277</NoWarn>
+    <ModulusDirectory>$(SteamLibraryDirectory)\Modulus</ModulusDirectory>
+    <ModulusDataDirectory>$(ModulusDirectory)\Modulus_Data</ModulusDataDirectory>
+    <ModulusManagedDirectory>$(ModulusDataDirectory)\Managed</ModulusManagedDirectory>
+    <BIEDirectory>$(ModulusDirectory)\BepInEx</BIEDirectory>
+    <BIECoreDirectory>$(BIEDirectory)\core</BIECoreDirectory>
+    <BIEPluginsDirectory>$(BIEDirectory)\plugins</BIEPluginsDirectory>
+    <ModulusModLoaderPluginDirectory>$(BIEPluginsDirectory)\ModulusModLoader</ModulusModLoaderPluginDirectory>
+    <ModulusModLoaderDllPath Condition="'$(ModulusModLoaderDllPath)' == '' and Exists('$(MSBuildThisFileDirectory)..\ModulusModLoader\bin\x64\$(Configuration)\ModulusModLoader.dll')">$(MSBuildThisFileDirectory)..\ModulusModLoader\bin\x64\$(Configuration)\ModulusModLoader.dll</ModulusModLoaderDllPath>
+    <ModulusModLoaderDllPath Condition="'$(ModulusModLoaderDllPath)' == ''">$(ModulusModLoaderPluginDirectory)\ModulusModLoader.dll</ModulusModLoaderDllPath>
+    <DeployToBepInEx>false</DeployToBepInEx>
+    <UserModsRoot Condition="'$(UserModsRoot)' == ''">$(USERPROFILE)\Documents\My Games\Modulus\mods</UserModsRoot>
+    <ModPublishDirectory>$(UserModsRoot)\$(ModFolderName)</ModPublishDirectory>
+  </PropertyGroup>
+  <Target Name="PublishModulusMod" AfterTargets="CopyFilesToOutputDirectory">
+    <MakeDir Directories="$(ModPublishDirectory)" />
+    <MakeDir Directories="$(ModPublishDirectory)\About" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModPublishDirectory)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(MSBuildThisFileDirectory)About\About.xml" DestinationFolder="$(ModPublishDirectory)\About" SkipUnchangedFiles="true" />
+  </Target>
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="bin\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+</Project>
