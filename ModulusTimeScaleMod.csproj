@@ -18,12 +18,4 @@
     <FileVersion>$(Version)</FileVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildThisFileDirectory)ModulusTimeScaleMod.VS.References.props" />
-  <ItemGroup>
-    <ProjectReference Include="..\ModulusModLoader\ModulusModLoader.csproj" Condition="Exists('$(MSBuildThisFileDirectory)..\ModulusModLoader\ModulusModLoader.csproj')" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="About\About.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>

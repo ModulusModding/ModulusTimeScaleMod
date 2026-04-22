@@ -30,7 +30,7 @@
       <HintPath>$(BIECoreDirectory)\MonoMod.Utils.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ModulusModLoader" Condition="!Exists('$(MSBuildThisFileDirectory)..\ModulusModLoader\ModulusModLoader.csproj')">
+    <Reference Include="ModulusModLoader">
       <HintPath>$(ModulusModLoaderDllPath)</HintPath>
       <Private>False</Private>
     </Reference>

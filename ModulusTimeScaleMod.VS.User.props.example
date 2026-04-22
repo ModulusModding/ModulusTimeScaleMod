@@ -2,5 +2,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <SteamLibraryDirectory Condition="'$(SteamLibraryDirectory)' == ''">H:\SteamLibrary\steamapps\common</SteamLibraryDirectory>
+    <!-- Optional: <ModulusModLoaderDllPath>C:\path\to\ModulusModLoader.dll</ModulusModLoaderDllPath> -->
+    <!-- Or place ModulusModLoader.dll in Refs\ under this project for CI without the game path. -->
   </PropertyGroup>
 </Project>

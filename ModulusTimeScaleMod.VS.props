@@ -31,18 +31,9 @@
     <BIECoreDirectory>$(BIEDirectory)\core</BIECoreDirectory>
     <BIEPluginsDirectory>$(BIEDirectory)\plugins</BIEPluginsDirectory>
     <ModulusModLoaderPluginDirectory>$(BIEPluginsDirectory)\ModulusModLoader</ModulusModLoaderPluginDirectory>
-    <ModulusModLoaderDllPath Condition="'$(ModulusModLoaderDllPath)' == '' and Exists('$(MSBuildThisFileDirectory)..\ModulusModLoader\bin\x64\$(Configuration)\ModulusModLoader.dll')">$(MSBuildThisFileDirectory)..\ModulusModLoader\bin\x64\$(Configuration)\ModulusModLoader.dll</ModulusModLoaderDllPath>
-    <ModulusModLoaderDllPath Condition="'$(ModulusModLoaderDllPath)' == ''">$(ModulusModLoaderPluginDirectory)\ModulusModLoader.dll</ModulusModLoaderDllPath>
     <DeployToBepInEx>false</DeployToBepInEx>
-    <UserModsRoot Condition="'$(UserModsRoot)' == ''">$(USERPROFILE)\Documents\My Games\Modulus\mods</UserModsRoot>
-    <ModPublishDirectory>$(UserModsRoot)\$(ModFolderName)</ModPublishDirectory>
   </PropertyGroup>
-  <Target Name="PublishModulusMod" AfterTargets="CopyFilesToOutputDirectory">
-    <MakeDir Directories="$(ModPublishDirectory)" />
-    <MakeDir Directories="$(ModPublishDirectory)\About" />
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModPublishDirectory)" SkipUnchangedFiles="true" />
-    <Copy SourceFiles="$(MSBuildThisFileDirectory)About\About.xml" DestinationFolder="$(ModPublishDirectory)\About" SkipUnchangedFiles="true" />
-  </Target>
+  <Import Project="$(MSBuildThisFileDirectory)Modulus.Mod.targets" />
   <ItemGroup>
     <Compile Remove="bin\**" />
     <Compile Remove="obj\**" />
